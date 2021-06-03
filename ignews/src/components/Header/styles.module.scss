@@ -17,47 +17,52 @@
   nav {
     margin-left: 5rem;
     height: 4rem;
+    a {
+
+      display: inline-block;
+      position: relative;
+      padding: 0 0.5rem;
+      height: 4rem;
+      line-height: 4rem;
+      color: var(--gray-300);
+
+      & + a {
+
+        //toda âncora que antes dela tem outra âncora
+        margin-left: 1.5rem;
+      }
+
+      &:hover {
+        color: var(--white);
+      }
+
+      transition: color 0.2s;
+
+      &.active {
+        color: var(--white);
+        font-weight: bold;
+      }
+
+      &.active::after {
+
+        //modificará depois do elemento active, por exemplo:
+        // content: 'a'; (acrescenta a letra A após o link ativo
+
+        content: '';
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        width: 100%;
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+        background: var(--yellow-500);
+      }
+    }
+
   }
 
-  a {
-
-    display: inline-block;
-    position: relative;
-    padding: 0 0.5rem;
-    height: 4rem;
-    line-height: 4rem;
-    color: var(--gray-300);
-
-    & + a {
-
-      //toda âncora que antes dela tem outra âncora
-      margin-left: 1.5rem;
-    }
-
-    &:hover {
-      color: var(--white);
-    }
-
-    transition: color 0.2s;
-
-    &.active {
-      color: var(--white);
-      font-weight: bold;
-    }
-
-    &.active::after {
-
-      //modificará depois do elemento active, por exemplo:
-      // content: 'a'; (acrescenta a letra A após o link ativo
-
-      content: '';
-      height: 3px;
-      border-radius: 3px 3px 0 0;
-      width: 100%;
-      position: absolute;
-      bottom: 1px;
-      left: 0;
-      background: var(--yellow-500);
-    }
+  > button {
+    margin-left: auto;
   }
+  
 }
