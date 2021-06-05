@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { SubscribeButton } from '../components/SubscribeButton';
 
@@ -40,7 +41,7 @@ export default function Home({product}: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async() => {
+export const getStaticProps: GetStaticProps = async() => {
 //pode ser dessa forma ou como HTTP
 //retrieve é quando só quer um dado
 //no parâmetro usar o Id do preço/dado que tu quer, é la no site do stripe que se acha products/dados que quer/API ID
@@ -63,7 +64,8 @@ export const getServerSideProps: GetServerSideProps = async() => {
   return { 
     props: {
       product,
-    }
+    },
+    revalidate: 60 * 60 * 24, //24 hours
   }
 }
 
