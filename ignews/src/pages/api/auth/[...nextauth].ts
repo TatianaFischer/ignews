@@ -11,7 +11,11 @@ export default NextAuth({
     }),
  
   ],
-
-
-  database: process.env.DATABASE_URL,
+  callbacks: {
+    async signIn(user, account, profile) {
+      console.log(user)
+      return true
+    },
+    },
+    database: process.env.DATABASE_URL,
 })
