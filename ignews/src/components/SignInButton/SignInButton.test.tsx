@@ -6,13 +6,6 @@ import { SignInButton } from '.';
 // o null siginifica que o usuário não está logado:
 jest.mock('next-auth/client');
 
-// , () => {
-//   return {
-//     useSession() {
-//       return [null, false];
-//     },
-//   };
-// }
 describe('SignInButton component', () => {
   it('renders correctly when user is not authenticade', () => {
     const useSessionMocked = mocked(useSession);
@@ -20,8 +13,7 @@ describe('SignInButton component', () => {
     //a função mockReturnValue determina que a partir dessa linha toda a vez que a função useSession for chamada ela vai retornar null, deslogado  e false, loader.
     //Porém se colocar o once no final significa que somente vai retornar esse valores na primeira linha excutada após.
 
-    const { debug } = render(<SignInButton />);
-    debug();
+    render(<SignInButton />);
 
     expect(screen.getByText('Sign in with GitHub')).toBeInTheDocument();
   });
@@ -37,8 +29,7 @@ describe('SignInButton component', () => {
       false,
     ]);
 
-    const { debug } = render(<SignInButton />);
-    debug();
+    render(<SignInButton />);
 
     expect(screen.getByText('John Doe')).toBeInTheDocument();
   });

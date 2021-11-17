@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { debug } from 'console';
+
 import { Header } from '.';
 
 // teste sendo feito antes de finalizar o componente. Por isso tem código comentado que não está sendo usado ainda, como o mock da rota next.
@@ -31,7 +31,5 @@ describe('Header component', () => {
 
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Posts')).toBeInTheDocument();
-
-    debug();
   });
 });
